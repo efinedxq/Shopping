@@ -34,7 +34,7 @@ public class GoodsDaoImpl implements IGoodsDao{
 		if (l != null && l.size() == 1 )
 		{
 			rst = (long) l.get(0);
-			return (rst-1)/2+1;
+			return (rst-1)/3+1;
 		}
 		return 0;
 	}
@@ -43,8 +43,8 @@ public class GoodsDaoImpl implements IGoodsDao{
 	public List getGoodsByPage(int pageNo) {
 		List<GoodsVo> rst = new ArrayList<GoodsVo>();
 		if(pageNo <= 0) pageNo = 1;
-		int begin = (pageNo-1)*2;
-		int size = 2;
+		int begin = (pageNo-1)*3;
+		int size = 3;
 		String hql = "from GoodsVo";
 		Session session = sessionFactory.getCurrentSession();
 		//分页

@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -38,17 +39,28 @@ public class OrderAction extends ActionSupport {
 	}
     //删除订单之后仍在订单列表中，需要订单id
 	@Action(value = "deleteOrder", 
-			results = { @Result(name="success",type="redirect",location="queryOrder")})
+			results = { @Result(name="success",type="chain",location="queryOrder")})
 	public String deleteOrder(){
+		System.out.println("orderId:"+orderid);
 		orderService.deleteOrder(orderid);
 		return SUCCESS;
 	}
 	//添加之后返回订单列表，需要items信息
 	@Action(value = "addOrder", 
-			results = { @Result(name="success",type="redirect",location="queryOrder")})
+			results = { @Result(name="success",type="chain",location="queryOrder")})
 	public String addOrder(){
-		List<Item> itemList = (List<Item>) ActionContext.getContext().getSession().get("cart");
+		ActionContext ctx = ActionContext.getContext();
+		List<Item> itemList = (List<Item>) ctx.getSession().get("cart");
 		orderService.addOrder(itemList);
+		ctx.getSession().remove("cart");
 		return SUCCESS;
 	}
+	public Integer getOrderid() {
+		return orderid;
+	}
+	public void setOrderid(Integer orderid) {
+		this.orderid = orderid;
+	}
+	
+	
 }

@@ -32,8 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td>订单编号</td>
             <td>${order.id}</td>
             <td>创建时间</td>
-            <td>${order.createTime }</td>
-            <td><a href="order/deleteOrder?id=${order.id}">删除订单</a></td>
+            <td>${order.createT }</td>
+            <td><a href="order/deleteOrder?orderid=${order.id}">删除订单</a></td>
         </tr>
     </table>
     <table border="1">

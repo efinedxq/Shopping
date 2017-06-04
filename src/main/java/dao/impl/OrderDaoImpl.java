@@ -26,7 +26,8 @@ public class OrderDaoImpl  implements OrderDao {
 	public void deleteOrder(Integer id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		Query query=session.createQuery("delete from Order where id =: id");
+		Query query=session.createQuery("delete from Order where id =:id");
+		System.out.println("orderId:"+id);
 		query.setParameter("id", id);
 		query.executeUpdate();
 	}

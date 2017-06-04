@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <!--指定全局国际化资源文件 -->
+	<constant name="struts.custom.il8n,resources" value="mess" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    
+    <constant name="struts.devMode" value="true" />
+	<!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+    <!--解决乱码    -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    
+    <!-- struts注解需要定义一下三个 -->
+	<!-- 定义action的位置   进行扫描的根包，该包会被扫描成action -->
+	<constant name="struts.convention.action.packages" value="action" />
+	<!-- spring+struts是要写上，工厂选用spring -->
+	<constant name="struts.objectFactory" value="spring" />
+    
+
+	<package name="qtech" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="authority" class="interceptor.AuthorityInterceptor"></interceptor>
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="authority"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="mydefault"></default-interceptor-ref>
+
+		<global-results>
+			<result name="login">/WEB-INF/content/userLogin.jsp</result>
+		</global-results>
+
+<!-- 		<action name="getAllGoods" class="action.GoodsAction" method="findAllGoods"> -->
+<!-- 			<result name="success">/WEB-INF/content/goodslist.jsp</result> -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="showAddGoods" class="action.GoodsAction" method="showAddGoods"> -->
+<!-- 			<result name="success">/WEB-INF/content/goodsDetail.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="showModifyGoods" class="action.GoodsAction" method="showModifyGoods"> -->
+<!-- 			<result name="success">/WEB-INF/content/modifyGoods.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="addGoods" class="action.GoodsAction" method="addGoods"> -->
+<!-- 			<result name="success" type="chain">getAllGoods</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="modifyGoodsDetail" class="action.GoodsAction" method="modifyGoods"> -->
+<!-- 			<result name="success" type="chain">getAllGoods</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="deleteGoodsById" class="action.GoodsAction" method="deleteGoods"> -->
+<!-- 			<result name="success" type="chain">getAllGoods</result> -->
+<!-- 		</action> -->
+		
+
+<!-- 		<action name="addToCart" class="action.CartAction" method="add"> -->
+			<!-- <result type="redirectAction">cart</result> -->
+<!-- 			<result>/WEB-INF/content/userCart.jsp</result> -->
+<!-- 		</action> -->
+
+<!-- 		<action name="modifyGoods" class="action.CartAction" method="modify"> -->
+<!-- 			<result>/WEB-INF/content/userCart.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="deleteGoods" class="action.CartAction" method="delete"> -->
+<!-- 			<result>/WEB-INF/content/userCart.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="clearCart" class="action.CartAction" method="clear"> -->
+<!-- 			<result>/WEB-INF/content/userCart.jsp</result> -->
+<!-- 		</action> -->
+
+
+
+<!-- 		<action name="myLogin" class="action.MyLoginAction"> -->
+<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+<!-- 			<result type="redirectAction"> -->
+<!-- 				<param name="actionName">getAllGoods</param> -->
+<!-- 				<param name="pageNo">1</param> -->
+<!-- 			</result> -->
+<!-- 		</action> -->
+
+
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+
+	</package>
+</struts>    

@@ -10,8 +10,6 @@
     <constant name="struts.devMode" value="true" />
 	<!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭 -->
 	<constant name="struts.serve.static.browserCache" value="false" />
-    <!--解决乱码    -->
-    <constant name="struts.i18n.encoding" value="UTF-8" />
     
     <!-- struts注解需要定义一下三个 -->
 	<!-- 定义action的位置   进行扫描的根包，该包会被扫描成action -->

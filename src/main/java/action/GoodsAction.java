@@ -54,16 +54,16 @@ public class GoodsAction extends ActionSupport implements ModelDriven<GoodsVo>{
 	@Action(value="addGoods",
 			results={@Result(name="success",type="chain",location="getAllGoods")})
 	public String addGoods() {
-		System.out.println("goodsName:"+dto.getGoodsname());
-		String s = dto.getGoodsname();
-		try {
-			s = new String(s.getBytes("utf-8"),"utf-8");
-			System.out.println("goodsName:"+s);
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		dto.setGoodsname(s);
+//		System.out.println("goodsName:"+dto.getGoodsname());
+//		String s = dto.getGoodsname();
+//		try {
+//			s = new String(s.getBytes("utf-8"),"utf-8");
+//			System.out.println("goodsName:"+s);
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		dto.setGoodsname(s);
 		goodsService.save(dto);
 		return SUCCESS;
 	}

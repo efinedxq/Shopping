@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -23,10 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="addGoods">
-    	商品名称：<input type="text" name="goodsname">  <br/>
-     	商品价格：<input type="text" name="price">  <br/>
-     	<input type="submit" value="添加商品">
-    </form>
+   <s:form action="addGoods" >
+   	<s:textfield name="goodsname" label="商品名称："></s:textfield>
+   	<s:password name="price" label="商品价格："></s:password>
+   	<s:submit value="添加商品"></s:submit>
+   </s:form>
   </body>
 </html>
